@@ -76,6 +76,7 @@ sub _insert_software_name {
     while(my $row = $resultVerif->fetchrow_hashref()){
         $valueVerif = $row->{ID};
         $categoryVerif = $row->{CATEGORY};
+        $homologated = $row->{HOMOLOGATED}
     }
 
     my @argInsert = ();
