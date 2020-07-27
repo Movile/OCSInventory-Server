@@ -84,13 +84,15 @@ sub _insert_software_name {
     if(!defined $valueVerif) {
         if(!defined $cat) {
             # Insert if undef
-            $sql = "INSERT INTO software_name (NAME) VALUES(?)";
+            $sql = "INSERT INTO software_name (NAME, HOMOLOGATED) VALUES(?)";
             push @argInsert, $name;
+            push @argInsert, $homologated;
         } else {
             # Insert if undef
-            $sql = "INSERT INTO software_name (NAME,CATEGORY) VALUES(?,?)";
+            $sql = "INSERT INTO software_name (NAME,CATEGORY,HOMOLOGATED) VALUES(?,?,?)";
             push @argInsert, $name;
             push @argInsert, $cat;
+            push @argInsert, $homologated
         }
         _prepare_sql($sql, @argInsert);
     }
