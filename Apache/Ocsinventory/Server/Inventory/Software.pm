@@ -64,6 +64,7 @@ sub _insert_software_name {
     my $resultVerif;
     my $valueVerif = undef;
     my $categoryVerif = undef;
+    my homologated = undef;
     my $valueResult;
     my $result;
 
