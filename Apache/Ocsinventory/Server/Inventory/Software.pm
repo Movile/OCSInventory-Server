@@ -64,7 +64,6 @@ sub _insert_software_name {
     my $resultVerif;
     my $valueVerif = undef;
     my $categoryVerif = undef;
-    my $homologated = undef;
     my $valueResult;
     my $result;
 
@@ -77,7 +76,6 @@ sub _insert_software_name {
     while(my $row = $resultVerif->fetchrow_hashref()){
         $valueVerif = $row->{ID};
         $categoryVerif = $row->{CATEGORY};
-        $homologated = $row->{HOMOLOGATED}
     }
 
     my @argInsert = ();
@@ -85,15 +83,13 @@ sub _insert_software_name {
     if(!defined $valueVerif) {
         if(!defined $cat) {
             # Insert if undef
-            $sql = "INSERT INTO software_name (NAME, HOMOLOGATED) VALUES(?)";
+            $sql = "INSERT INTO software_name (NAME) VALUES(?)";
             push @argInsert, $name;
-            push @argInsert, $homologated;
         } else {
             # Insert if undef
-            $sql = "INSERT INTO software_name (NAME,CATEGORY,HOMOLOGATED) VALUES(?,?,?)";
+            $sql = "INSERT INTO software_name (NAME,CATEGORY) VALUES(?,?)";
             push @argInsert, $name;
             push @argInsert, $cat;
-            push @argInsert, $homologated
         }
         _prepare_sql($sql, @argInsert);
     }
